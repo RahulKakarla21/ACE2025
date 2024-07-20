@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login/Register</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        width: 300px;
+        text-align: center;
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+        width:(100% - 20px);
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    .form-switch {
+        margin-top: 10px;
+    }
+    .form-switch button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: #4CAF50;
+        text-decoration: underline;
+        font-size: 14px;
+    }
+    .error-message {
+        color: #000000;
+        margin-top: 5px;
+        text-align: left;
+    }
+</style>
+</head>
+<body>
+    <center>
+        <br><br><br><br><br><br><br>
+    
+    <div class="container">
+    <h2>Login/Register</h2>
+    <form id="login-form">
+        <input type="text" id="login-username" placeholder="Username" required><br>
+        <input type="password" id="login-password" placeholder="Password" required><br>
+        <input type="submit" value="Login">
+    </form>
+    <div class="form-switch">
+        <button id="register-switch">Don't have an account ? Register here</button>
+    </div>
+    <form id="register-form" style="display:none;">
+        <input type="text" id="register-username" placeholder="Username" required><br>
+        <input type="email" id="register-email" placeholder="Email" required><br>
+        <input type="password" id="register-password" placeholder="Password" required><br>
+        <input type="submit" value="Register">
+    </form>
+    <div id="error-message" class="error-message" style="display:none;"></div>
+</div>
+
+<script>
+    document.getElementById("register-switch").addEventListener("click", function() {
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("register-form").style.display = "block";
+        document.getElementById("error-message").style.display = "none";
+    });
+
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let username = document.getElementById("login-username").value;
+        let password = document.getElementById("login-password").value;
+        if (username === "user" && password === "password") {
+            alert("Login successful!");
+        } else {
+            displayErrorMessage("Invalid username or password.");
+        }
+    });
+    function displayErrorMessage(message) {
+        let errorMessage = document.getElementById("error-message");
+        errorMessage.textContent = message;
+        errorMessage.style.display = "block";
+    }
+</script>
+    </center>
+</body>
+</html>
